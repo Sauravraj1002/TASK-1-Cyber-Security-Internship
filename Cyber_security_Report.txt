@@ -1,0 +1,122 @@
+Task 1: Scan Your Local Network for Open Ports 
+Submitted By 
+Name: Saurav Raj 
+Objective 
+The objective of this task was to discover active devices and identify open ports within a local network using Nmap. This 
+helps in understanding network exposure, running services, and potential security risks associated with open ports. 
+Tools Used 
+1. Nmap 7.99 
+2. Windows Command Prompt 
+3. GitHub (for submission) 
+Network Information 
+Parameter 
+Value 
+IPv4 Address 
+10.250.208.76 
+Subnet Mask 
+255.255.255.0 
+Default Gateway 
+10.250.208.77 
+Network Range 
+10.250.208.0/24 
+Methodology 
+Step 1: Identify Local Network Information 
+The following command was executed: 
+This command provided the system's IPv4 address, subnet mask, and default gateway information. 
+1 
+Step 2: Perform TCP SYN Scan 
+The following Nmap command was used: 
+ 
+Command Explanation 
+• nmap Network scanning tool. 
+• -sS TCP SYN (Stealth) Scan. 
+• 10.250.208.0/24 Scan all devices within the local subnet. Step 3: Save Scan Results 
+ 
+This command saved the scan output into a text file for documentation and analysis. 
+Scan Results 
+Host 1 
+Device Information 
+Open Ports 
+Analysis 
+Parameter 
+Value 
+IP Address 
+10.250.208.77 
+Status 
+Port 
+53/tcp 
+Up 
+State 
+Open 
+Service 
+Domain (DNS) 
+Port 53 is used for Domain Name System (DNS) services. The default gateway/router is responding on this port, which is 
+expected because routers often provide DNS resolution services for connected devices. 
+Security Risk 
+• Low Risk 
+• Normal behavior for routers and gateways 
+• Should be restricted to trusted network users 
+2 
+Host 2 
+Device Information 
+Open Ports 
+Analysis 
+Port 135 – MSRPC 
+Parameter 
+Value 
+IP Address 
+10.250.208.76 
+Status 
+Port 
+State 
+Up 
+Service 
+135/tcp 
+Open 
+MSRPC 
+139/tcp 
+Open 
+NetBIOS Session Service 
+445/tcp 
+Open 
+Microsoft-DS (SMB) 
+Microsoft Remote Procedure Call is used by Windows services for communication and remote management functions. 
+Port 139 – NetBIOS 
+NetBIOS Session Service enables legacy Windows file and printer sharing functionality. 
+Port 445 – SMB 
+Server Message Block (SMB) is used for file sharing, printer sharing, and network communication between Windows 
+systems. 
+Security Risks 
+1. Open SMB services may be targeted by ransomware and malware. 
+2. NetBIOS can expose network information if improperly configured. 
+3. RPC services may become attack vectors if vulnerable software exists. 
+4. Unnecessary services increase the attack surface of a device. 
+Findings 
+1. Two active hosts were identified within the network. 
+2. The default gateway was running DNS services on port 53. 
+3. The local Windows machine exposed ports 135, 139, and 445. 
+4. No unusual or suspicious services were discovered. 
+5. Most identified ports are standard Windows networking services. 
+3 
+Recommendations 
+1. Keep Windows Firewall enabled. 
+2. Disable file sharing services if not required. 
+3. Regularly update Windows and installed software. 
+4. Restrict SMB access to trusted networks only. 
+5. Monitor open ports periodically using Nmap. 
+6. Use strong authentication and network access controls. 
+Conclusion 
+The network scan successfully identified active hosts and open ports within the local network. The gateway device exposed 
+DNS services while the Windows system exposed standard networking and file-sharing ports. Although the discovered 
+services are commonly found in Windows environments, unnecessary services should be disabled and firewall protections 
+should remain enabled to reduce potential security risks. 
+The task provided practical experience in network reconnaissance, port scanning, service identification, and basic security 
+assessment using Nmap. 
+Outcome 
+Through this task, I learned: 
+• Basics of network reconnaissance 
+• TCP SYN scanning using Nmap 
+• Identification of active hosts 
+• Analysis of open ports and services 
+• Security implications of exposed network services 
+• Documentation and reporting of cybersecurity findings
